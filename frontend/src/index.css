@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-gray-100 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold px-6 py-3 rounded-xl
+           hover:from-brand-400 hover:to-brand-600 transition-all duration-200 shadow-lg hover:shadow-brand-500/30
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:from-brand-500 disabled:hover:to-brand-700;
+  }
+
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-200
+           placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500/50
+           transition-all duration-200;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-white/20 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-white/30; }
+
+/* Score ring animation */
+@keyframes scoreRingFill {
+  from { stroke-dashoffset: 502; }
+  to   { stroke-dashoffset: var(--target-offset); }
+}
+.score-ring-circle {
+  animation: scoreRingFill 1.5s ease-out forwards;
+  stroke-dasharray: 502;
+}
